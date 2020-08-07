@@ -1,12 +1,35 @@
 # openwrt-pi4
-OpenWRT on Pi4
-OpenWRT Raspberry Pi4
+
+* OpenWRT Raspberry Pi4 4/8GB
+* BT Whole Home for wifi mesh
+* USB 3.0 SSD in place of microSD
+
+
+## prepare pi4 for usb boot
+
+1. Download and image to microSD current Raspbian OS
+
+```Shell
+wget https://downloads.raspberrypi.org/raspios_lite_armhf_latest
+```
+Copy the file to the microSD, note check that you have the correct device, should be something like mmcblk0 for the SD card
+```Shell
+dd bs=4M if=raspios_lite_armhf_latest of=/dev/mmcblkX conv=fsync
+```
+
+2. Insert the micoSD and boot the system and login, default user name is pi, with password raspberry
+3. Perform the update to raspbian
+
+``` Shell
+sudo apt update && sudo apt upgradesudo 
+sudo rpi-update 
+sudo reboot
+```
 
 How to compile OpenWRT for Raspberry Pi4 (64bit) with USB NIC support:
- - No wireless (internal antennae is not very strong) - using old router as standalone AP
+ - No wireless using BT mesh 
  - Support for USB3 Ethernet Adapter
 
- Note: These are the stpes I used in LinuxMint, but should work for any Debian based OS.
 
  Steps:
 
